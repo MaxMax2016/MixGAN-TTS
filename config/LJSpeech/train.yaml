@@ -1,0 +1,45 @@
+path:
+  ckpt_path: "./output/ckpt/LJSpeech"
+  log_path: "./output/log/LJSpeech"
+  result_path: "./output/result/LJSpeech"
+optimizer:
+  batch_size: 8
+  batch_size_shallow: 4
+  betas: [0.5, 0.9]
+  gamma: 0.999
+  grad_clip_thresh: 1
+  grad_acc_step: 1
+  init_lr_G: 0.0001   # 0.0001
+  init_lr_D: 0.0002   # 0.0002
+optimizer_fs2:
+  betas: [0.9, 0.98]
+  eps: 0.000000001
+  weight_decay: 0.0
+  warm_up_step: 2000
+  anneal_steps: [360000]  # 跑30万步，不衰减，效果差
+  anneal_rate: 0.3
+loss:
+  adv_loss_mode: "lsgan"    # 最小二乘GAN损失
+  noise_loss: "l1"          # l1距离
+  dur_loss: "mse"           # 均方误差损失
+  pitch_loss: "l1"          # 音高损失l1
+  lambda_d: 0.1
+  lambda_p: 0.1
+  lambda_e: 0.1
+  lambda_fm: 10.0
+  lambda_fm_shallow: 0.001
+step:
+  total_step_aux: 200000
+  total_step_naive: 600000
+  total_step_shallow: 600000
+  log_step: 100
+  synth_step: 100
+  val_step: 100
+  save_step: 20000
+aligner:
+  helper_type: "dga" # ["dga", "ctc", "none"]
+  ctc_weight_start: 1.0
+  ctc_weight_end: 1.0
+  guided_sigma: 0.4
+  guided_lambda: 1.0
+  guided_weight: 1.0
