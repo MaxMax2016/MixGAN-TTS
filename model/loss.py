@@ -36,11 +36,11 @@ def get_adversarial_losses_fn(mode):
         raise NotImplementedError
 
 
-class DiffGANTTSLoss(nn.Module):
-    """ DiffGAN-TTS Loss """
+class MixGANTTSLoss(nn.Module):
+    """ MixGAN-TTS Loss """
 
     def __init__(self, args, preprocess_config, model_config, train_config):
-        super(DiffGANTTSLoss, self).__init__()
+        super(MixGANTTSLoss, self).__init__()
         self.mae_loss = nn.L1Loss()
         self.mse_loss = nn.MSELoss()        # 均方误差损失
         self.model = args.model

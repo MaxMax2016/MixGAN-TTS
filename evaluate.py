@@ -10,7 +10,7 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 
 from utils.tools import to_device, log, synth_one_sample
-from model import DiffGANTTSLoss
+from model import MixGANTTSLoss
 from dataset import Dataset
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -32,7 +32,7 @@ def evaluate(args, model, discriminator, step, configs, logger=None, vocoder=Non
     )
 
     # Get loss function
-    Loss = DiffGANTTSLoss(args, preprocess_config, model_config, train_config).to(device)
+    Loss = MixGANTTSLoss(args, preprocess_config, model_config, train_config).to(device)
 
     loss_sums = [{k:0 for k in loss.keys()} if isinstance(loss, dict) else 0 for loss in losses]
     for batchs in loader:

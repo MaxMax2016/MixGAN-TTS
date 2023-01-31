@@ -5,7 +5,7 @@ import torch
 import numpy as np
 
 import hifigan
-from model.diffgantts import DiffGANTTS,JCUDiscriminator
+from model.mixgantts import MixGANTTS,JCUDiscriminator
 from model.optimizer import ScheduledOptim
 
 
@@ -13,7 +13,7 @@ def get_model(args, configs, device, train=False):
     (preprocess_config, model_config, train_config) = configs
 
     epoch = 1
-    model = DiffGANTTS(args, preprocess_config, model_config, train_config).to(device)
+    model = MixGANTTS(args, preprocess_config, model_config, train_config).to(device)
     discriminator = JCUDiscriminator(preprocess_config, model_config, train_config).to(device)
     if args.restore_step:
         ckpt_path = os.path.join(

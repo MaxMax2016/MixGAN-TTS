@@ -11,7 +11,7 @@ from tqdm import tqdm
 
 from utils.model import get_param_num, get_model, get_vocoder
 from utils.tools import get_configs_of, to_device, log, synth_one_sample
-from model import DiffGANTTSLoss
+from model import MixGANTTSLoss
 from dataset import Dataset
 
 from evaluate import evaluate
@@ -44,8 +44,8 @@ def main(args, configs):
     discriminator = nn.DataParallel(discriminator)
     num_params_G = get_param_num(model)
     num_params_D = get_param_num(discriminator)
-    Loss = DiffGANTTSLoss(args, preprocess_config, model_config, train_config).to(device)
-    print("Number of DiffGAN-TTS Parameters     :", num_params_G)
+    Loss = MixGANTTSLoss(args, preprocess_config, model_config, train_config).to(device)
+    print("Number of MixGAN-TTS Parameters     :", num_params_G)
     print("          JCUDiscriminator Parameters:", num_params_D)
     print("          All Parameters             :", num_params_G + num_params_D)
 

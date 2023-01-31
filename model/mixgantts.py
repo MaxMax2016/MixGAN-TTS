@@ -13,16 +13,16 @@ from utils.tools import get_mask_from_lengths
 from .loss import get_adversarial_losses_fn
 
 
-class DiffGANTTS(nn.Module):                                # 扩散解码器在同一目录的modules.py最下方
-    """ DiffGAN-TTS """
+class MixGANTTS(nn.Module):                                # 扩散解码器在同一目录的modules.py最下方
+    """ MixGAN-TTS """
 
     def __init__(self, args, preprocess_config, model_config, train_config):
-        super(DiffGANTTS, self).__init__()
+        super(MixGANTTS, self).__init__()
         self.model = args.model
         self.model_config = model_config
 
         self.linguistic_encoder = LinguisticEncoder(preprocess_config, model_config, train_config)     # 语言编码器  -> 变分发生器
-        if self.model in ["aux", "shallow"]:                                                    # 在DiffGAN-TTS直接运用音高、能量轮廓
+        if self.model in ["aux", "shallow"]:                                                    # 在MixGAN-TTS直接运用音高、能量轮廓
             self.decoder = Decoder(model_config)
             self.mel_linear = nn.Linear(
                 model_config["transformer"]["decoder_hidden"],
