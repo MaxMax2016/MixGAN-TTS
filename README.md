@@ -1,21 +1,18 @@
-# DiffGAN-TTS - PyTorch Implementation
+# MixGAN-TTS - PyTorch Implementation
 
-PyTorch implementation of [DiffGAN-TTS: High-Fidelity and Efficient Text-to-Speech with Denoising Diffusion GANs](https://arxiv.org/abs/2201.11972)
+PyTorch implementation of [MixGAN-TTS: End-to-End Speech Synthesis Based on Diffusion Model]
 
 <p align="center">
     <img src="img/model_1.png" width="80%">
 </p>
 
-<p align="center">
-    <img src="img/model_2.png" width="80%">
-</p>
 
 # Repository Status
-- [x] Naive Version of DiffGAN-TTS
-- [x] Active Shallow Diffusion Mechanism: DiffGAN-TTS (two-stage)
+- [x] Naive Version of MixGAN-TTS
+- [x] Active Shallow Diffusion Mechanism: MixGAN-TTS (two-stage)
 
 ## Audio Samples
-Audio samples are available at [/demo](https://github.com/keonlee9420/DiffGAN-TTS/tree/main/demo).
+Audio samples are available at [/demo](https://github.com/qw1260497397/MixGAN-TTS/tree/main/demo).
 
 # Quickstart
 
@@ -136,11 +133,6 @@ The loss curves, synthesized mel-spectrograms, and audios are shown.
 ![](./img/tensorboard_spec_naive.png)
 ![](./img/tensorboard_audio_naive.png)
 
-## Shallow Diffusion
-
-![](./img/tensorboard_loss_shallow.png)
-![](./img/tensorboard_spec_shallow.png)
-![](./img/tensorboard_audio_shallow.png)
 
 # Notes
 
